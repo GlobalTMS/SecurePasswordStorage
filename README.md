@@ -1,8 +1,8 @@
 Secure Password Storage
 =======================
 
-This code provides a secure way to store passwords in database. It is based on the secure salt technique, to store the passwords as a pair of values.
-This is achieved that if two users have identical passwords different values are stored in both columns, making it much more expensive to discover the passwrods of users, even having access to the database
+This code provides a secure way to store passwords in a database. It is based on the secure salt technique, to store the passwords as a pair of values.
+This is achieved in a way that if two users have identical passwords different values are stored in both columns, making it much more expensive to discover the passwords of users, even having access to the database
 
 ## Motivation
 
@@ -10,7 +10,7 @@ A simple and secure way to generate hashed passwords for store it in database an
 
 ## Usage
 
-### The createHashedPassword function requests a string and returns an object with the password and the salt. Now it is only necessary to store this para for values in database.
+### The createHashedPassword function requests a string and returns an object with the password and the salt. Now it is only necessary to store this pair for values in database.
 ```java
 PasswordStorageService service = new PasswordStorageService();
 PassSaltDTO result = new PassSaltDTO();
@@ -20,7 +20,7 @@ try {
 	//log this expection
 }
 ```
-### The function verifyPassword, is passed the string containing the password to be verified, with the pair of database values. Logically devulve if this password is correct or not.
+### The function verifyPassword, is passed the string containing the password to be verified, with the pair of database values. Logically returns if this password is correct or not.
 ```java
 PasswordStorageService service = new PasswordStorageService();
 PassSaltDTO dataBaseResult = new PassSaltDTO("some_password_value", "some_salt_value");
